@@ -1,0 +1,16 @@
+# macOS
+.DS_Store
+
+# HISE autosaves (transient, not the real preset)
+Presets/Autosave_*.hip
+Presets/Autosave_*_Recovered.xml
+
+# Compiled plugin output
+Binaries/
+build/
+
+# HISE monolith sample data (not used in this project, but excluded by convention)
+*.ch1
+
+# Temp files
+*.tmp

@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ContentProperties DeviceType="Desktop">
+  <Component type="ScriptPanel" id="pnlBase1" x="0" y="0" width="400" height="800">
+    <Component type="ScriptFloatingTile" id="fltEqGraph" x="25" y="49" width="350"
+               height="200" ContentType="DraggableFilterPanel" bgColour="1660944384"
+               itemColour="16777215" itemColour2="4294967295" Data="{&#10;  &quot;ProcessorId&quot;: &quot;Parametriq EQ&quot;,&#10;  &quot;Index&quot;: -1,&#10;  &quot;FollowWorkspace&quot;: true,&#10;  &quot;AllowDynamicSpectrumAnalyser&quot;: true,&#10;  &quot;GainRange&quot;: 24.0,&#10;  &quot;ShowLines&quot;: true,&#10;  &quot;AllowFilterResizing&quot;: false,&#10;  &quot;AllowContextMenu&quot;: true&#10;}"
+               parentComponent="pnlBase1" itemColour3="4286940549"/>
+    <Component type="ScriptButton" id="btnBand1OnOff" x="37" y="259" width="20"
+               height="20" parentComponent="pnlBase1" processorId="Parametriq EQ"
+               parameterId="Band 1 Enabled"/>
+    <Component type="ScriptButton" id="btnBand2OnOff" x="115" y="259" width="20"
+               height="20" parentComponent="pnlBase1" processorId="Parametriq EQ"
+               parameterId="Band 2 Enabled"/>
+    <Component type="ScriptButton" id="btnBand3OnOff" x="190" y="258" width="20"
+               height="20" parentComponent="pnlBase1" processorId="Parametriq EQ"
+               parameterId="Band 3 Enabled"/>
+    <Component type="ScriptButton" id="btnBand4OnOff" x="270" y="259" width="20"
+               height="20" parentComponent="pnlBase1" processorId="Parametriq EQ"
+               parameterId="Band 4 Enabled"/>
+    <Component type="ScriptButton" id="btnBand5OnOff" x="346" y="257" width="20"
+               height="20" parentComponent="pnlBase1" processorId="Parametriq EQ"
+               parameterId="Band 5 Enabled"/>
+    <Component type="ScriptSlider" id="sldBand1Freq" x="10" y="280" width="70"
+               height="70" parentComponent="pnlBase1" mode="Frequency" min="20.0"
+               max="1000.0" stepSize="1.0" suffix=" Hz" middlePosition="1500.0"
+               filmstripImage="{PROJECT_FOLDER}final-71.png" numStrips="128.0"
+               scaleFactor="0.25" defaultValue="20.0"/>
+    <Component type="ScriptLabel" id="lblBand1Freq" x="16" y="349" width="60"
+               height="20" parentComponent="pnlBase1" text="20 Hz"/>
+    <Component type="ScriptSlider" id="sldBand2Freq" x="88" y="280" width="70"
+               height="70" parentComponent="pnlBase1" mode="Frequency" min="40.0"
+               max="3000.0" stepSize="1.0" suffix="Hz" middlePosition="1500.0"
+               numStrips="128.0" scaleFactor="0.25" defaultValue="100.0" filmstripImage="{PROJECT_FOLDER}final-71.png"/>
+    <Component type="ScriptLabel" id="lblBand2Freq" x="96" y="349" width="60"
+               height="20" parentComponent="pnlBase1" text="100 Hz"/>
+    <Component type="ScriptSlider" id="sldBand3Freq" x="163" y="280" width="70"
+               height="70" parentComponent="pnlBase1" mode="Frequency" min="300.0"
+               max="9000.0" stepSize="0.1000000014901161" suffix="Hz" middlePosition="2000.0"
+               defaultValue="680.0" filmstripImage="{PROJECT_FOLDER}final-71.png"
+               numStrips="128.0" scaleFactor="0.25"/>
+    <Component type="ScriptLabel" id="lblBand3Freq" x="171" y="349" width="60"
+               height="20" parentComponent="pnlBase1" text="680 Hz"/>
+    <Component type="ScriptSlider" id="sldBand4Freq" x="238" y="280" width="70"
+               height="70" parentComponent="pnlBase1" mode="Frequency" min="20.0"
+               max="20000.0" stepSize="1.0" suffix=" Hz" middlePosition="1500.0"
+               filmstripImage="{PROJECT_FOLDER}final-71.png" numStrips="128.0"
+               scaleFactor="0.25" defaultValue="4100.0"/>
+    <Component type="ScriptLabel" id="lblBand4Freq" x="245" y="349" width="60"
+               height="20" parentComponent="pnlBase1" text="4.10 kHz"/>
+    <Component type="ScriptSlider" id="sldBand5Freq" x="318" y="280" width="70"
+               height="70" parentComponent="pnlBase1" mode="Frequency" min="20.0"
+               max="20000.0" stepSize="1.0" suffix=" Hz" middlePosition="1500.0"
+               filmstripImage="{PROJECT_FOLDER}final-71.png" numStrips="128.0"
+               scaleFactor="0.25" defaultValue="20000.0"/>
+    <Component type="ScriptLabel" id="lblBand5Freq" x="324" y="349" width="60"
+               height="20" parentComponent="pnlBase1" text="20.00 kHz"/>
+    <Component type="ScriptSlider" id="sldBand2Gain" x="60" y="374" width="70"
+               height="70" parentComponent="pnlBase1" mode="Decibel" min="-24.0"
+               max="24.0" suffix=" dB" middlePosition="0.0" filmstripImage="{PROJECT_FOLDER}final-71.png"
+               numStrips="128.0" scaleFactor="0.25"/>
+    <Component type="ScriptLabel" id="lblBand2Gain" x="68" y="441" width="60"
+               height="20" parentComponent="pnlBase1" text="0.0 dB"/>
+    <Component type="ScriptSlider" id="sldBand3Gain" x="141" y="384" width="70"
+               height="70" parentComponent="pnlBase1" mode="Decibel" min="-24.0"
+               max="24.0" suffix=" dB" middlePosition="0.0" bgColour="1660944383"
+               filmstripImage="{PROJECT_FOLDER}final-71.png" numStrips="128.0"
+               scaleFactor="0.1800000071525574"/>
+    <Component type="ScriptLabel" id="lblBand3Gain" x="143" y="440" width="50"
+               height="20" parentComponent="pnlBase1" text="0.0 dB"/>
+    <Component type="ScriptSlider" id="sldBand4Gain" x="276" y="374" width="70"
+               height="70" parentComponent="pnlBase1" mode="Decibel" min="-24.0"
+               max="24.0" suffix=" dB" middlePosition="0.0" filmstripImage="{PROJECT_FOLDER}final-71.png"
+               numStrips="128.0" scaleFactor="0.25"/>
+    <Component type="ScriptLabel" id="lblBand4Gain" x="283" y="440" width="60"
+               height="20" parentComponent="pnlBase1" text="0.0 dB"/>
+    <Component type="ScriptSlider" id="sldBand3Width" x="205" y="384" width="70"
+               height="70" parentComponent="pnlBase1" filmstripImage="{PROJECT_FOLDER}final-71.png"
+               numStrips="128.0" scaleFactor="0.1800000071525574" min="0.300000011920929"
+               max="8.0" defaultValue="1.5" middlePosition="1.5"/>
+    <Component type="ScriptLabel" id="lblBand3Width" x="208" y="440" width="50"
+               height="20" parentComponent="pnlBase1" text="1.50"/>
+    <Component type="ScriptSlider" id="sldGateThresh" x="28" y="504" width="70"
+               height="70" parentComponent="pnlBase1" filmstripImage="{PROJECT_FOLDER}final-71.png"
+               numStrips="128.0" scaleFactor="0.25" mode="Decibel" min="-100.0"
+               max="0.0" stepSize="0.1000000014901161" suffix=" dB" middlePosition="-38.0"
+               defaultValue="-100.0"/>
+    <Component type="ScriptLabel" id="lblGateThresh" x="35" y="574" width="60"
+               height="20" parentComponent="pnlBase1" text="-100.0 dB"/>
+    <Component type="ScriptSlider" id="sldGateAttack" x="28" y="594" width="70"
+               height="70" parentComponent="pnlBase1" mode="Time" max="100.0"
+               stepSize="1.0" suffix=" ms" middlePosition="1000.0" min="0.1000000014901161"
+               filmstripImage="{PROJECT_FOLDER}final-71.png" numStrips="128.0"
+               scaleFactor="0.25" defaultValue="0.1000000014901161"/>
+    <Component type="ScriptLabel" id="lblGateAttack" x="35" y="666" width="60"
+               height="20" parentComponent="pnlBase1" text="0 ms"/>
+    <Component type="ScriptSlider" id="sldGateRelease" x="29" y="687" width="70"
+               height="70" parentComponent="pnlBase1" filmstripImage="{PROJECT_FOLDER}final-71.png"
+               numStrips="128.0" scaleFactor="0.25" max="100.0" middlePosition="50.0"/>
+    <Component type="ScriptLabel" id="lblGateRelease" x="35" y="757" width="60"
+               height="20" parentComponent="pnlBase1" text="43 ms"/>
+    <Component type="ScriptSlider" id="sldCompThresh" x="127" y="504" parentComponent="pnlBase1"
+               width="70" height="70" processorId="imiKChannel" parameterId="CompressorThreshold"
+               mode="Decibel" min="-100.0" max="0.0" stepSize="0.1000000014901161"
+               suffix=" dB" middlePosition="-18.0" filmstripImage="{PROJECT_FOLDER}final-71.png"
+               numStrips="128.0" scaleFactor="0.25"/>
+    <Component type="ScriptLabel" id="lblCompThresh" x="132" y="574" width="60"
+               height="20" parentComponent="pnlBase1" text="0.0 dB"/>
+    <Component type="ScriptSlider" id="sldCompRatio" x="204" y="504" width="70"
+               height="70" parentComponent="pnlBase1" min="1.0" max="32.0" defaultValue="1.0"
+               filmstripImage="{PROJECT_FOLDER}final-71.png" numStrips="128.0"
+               scaleFactor="0.25" middlePosition="4.5"/>
+    <Component type="ScriptLabel" id="lblCompRatio" x="214" y="573" width="60"
+               height="20" parentComponent="pnlBase1" text="1.0:1"/>
+    <Component type="ScriptSlider" id="sldCompAttack" x="161" y="594" width="70"
+               height="70" parentComponent="pnlBase1" mode="Time" min="0.1000000014901161"
+               max="100.0" stepSize="0.1000000014901161" suffix="ms" middlePosition="-18.0"
+               filmstripImage="{PROJECT_FOLDER}final-71.png" numStrips="128.0"
+               scaleFactor="0.25"/>
+    <Component type="ScriptLabel" id="lblCompAttack" x="168" y="666" width="60"
+               height="20" parentComponent="pnlBase1" text="48 ms"/>
+    <Component type="ScriptSlider" id="sldCompRelease" x="161" y="687" width="70"
+               height="70" parentComponent="pnlBase1" filmstripImage="{PROJECT_FOLDER}final-71.png"
+               numStrips="128.0" scaleFactor="0.25" mode="Time" max="300.0"
+               stepSize="1.0" suffix=" ms" middlePosition="150.0" min="0.009999999776482582"
+               defaultValue="0.1000000014901161"/>
+    <Component type="ScriptLabel" id="lblCompRelease" x="167" y="757" width="60"
+               height="20" parentComponent="pnlBase1" text="212 ms"/>
+    <Component type="ScriptSlider" id="SldOutputGain" x="320" y="530" width="20"
+               height="220" parentComponent="pnlBase1" stepSize="0.1000000014901161"
+               suffix=" dB" middlePosition="-18.0" filmstripImage="{PROJECT_FOLDER}kadabra_output_gain_filmstrip_128f_220px.png"
+               numStrips="128.0" mode="Decibel" min="-100.0" max="36.0"/>
+    <Component type="ScriptLabel" id="lblOutputGain" x="302" y="755" width="45"
+               height="20" parentComponent="pnlBase1" text="0.8 dB"/>
+    <Component type="ScriptPanel" id="pnlClipLedLeft" x="351" y="514" width="8"
+               height="8" parentComponent="pnlBase1" allowCallbacks="Clicks Only"/>
+    <Component type="ScriptPanel" id="pnlClipLedRight" x="361" y="514" width="8"
+               height="8" parentComponent="pnlBase1" allowCallbacks="Clicks Only"/>
+  </Component>
+  <Component type="ScriptFloatingTile" id="outPeakMeters" x="350" y="528"
+             ContentType="MatrixPeakMeter" bgColour="4278190080" itemColour="4290888129"
+             itemColour2="4285032552" Data="{&#10;  &quot;ProcessorId&quot;: &quot;Container1&quot;,&#10;  &quot;Index&quot;: -1,&#10;  &quot;FollowWorkspace&quot;: false,&#10;  &quot;SegmentLedSize&quot;: 0.0,&#10;  &quot;UpDecayTime&quot;: 0.0,&#10;  &quot;DownDecayTime&quot;: 300.0,&#10;  &quot;UseSourceChannels&quot;: false,&#10;  &quot;SkewFactor&quot;: 0.1,&#10;  &quot;PaddingSize&quot;: 1.0,&#10;  &quot;ShowMaxPeak&quot;: true,&#10;  &quot;ChannelIndexes&quot;: [&#10;    0,&#10;    1&#10;  ]&#10;}"
+             width="20" height="240"/>
+</ContentProperties>
