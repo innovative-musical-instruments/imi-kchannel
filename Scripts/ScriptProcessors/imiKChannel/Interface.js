@@ -16,12 +16,17 @@ inline function formatFreqText(value)
         return Math.round(value) + " Hz";
 }
 // ---------------- EQ band on/off ----------------
-// NOTE: the graph doesn't redraw immediately when toggling a band on/off -
-// the audio and the knobs are already correct, this is a cosmetic-only lag
-// on the native fltEqGraph tile until the next real touch. Several attempts
-// to force a redraw from script (attribute nudges, forcing Data JSON
-// changes, updateValueFromProcessorConnection) have not worked - see chat
-// history for what's been ruled out before trying anything new here.
+// Historical note: toggling a band's Enabled state from script used to
+// leave the fltEqGraph tile visually stale (curve + drag markers) until
+// some other coefficient-changing control was touched, even though the
+// audio and the bound knob were already correct. Root-caused to two bugs
+// in HISE's own source, not something fixable from script:
+//   1. FilterDragOverlay::checkEnabledBands() (EqComponent.cpp) updated
+//      the drag-handle marker data but never called repaint() on itself.
+//   2. FilterGraph::enableBand() (FilterGraph.h) only called repaint(),
+//      not refreshAsync(), so the cached curve path was never recomputed.
+// Both patched locally in the HISE source tree; the graph now updates
+
 inline function onBandOnOff(component, value)
 {
     local bandNum = parseInt(component.get("id").substring(7, 8));
@@ -150,6 +155,69 @@ inline function onCompRelease(component, value)
     Content.getComponent("lblCompRelease").set("text", Math.round(value) + " ms");
 }
 Content.getComponent("sldCompRelease").setControlCallback(onCompRelease);
+// ---------------- Gain Reduction meter (Gate + Compressor) ----------------
+// Vertical meter, top-anchored: 0 dB at the top, growing downward as more
+// gain reduction is applied. Combines GateReduction + CompressorReduction,
+// so a closed gate reads as full-scale (dominates), and with the gate open
+// the bar tracks compressor GR only - one panel, two jobs.
+// No live numeric label - GR moves too erratically with the ballistics to
+// read as text, so static dB reference lines are drawn on the meter instead.
+const var attenuationMeter = Content.getComponent("pnlAttenuationMeter");
+const var GR_METER_RANGE_DB = 24.0;            // 0 dB at top, -24 dB at bottom (full-scale)
+const var GR_METER_TICKS_DB = [-6, -12, -18];  // reference lines between the ends
+const var GR_METER_BAR_COLOUR  = 0xFFFFAA00;   // amber
+const var GR_METER_TICK_COLOUR = 0x55FFFFFF;
+reg attenuationDb = 0.0;
+
+inline function dbToMeterY(db, h)
+{
+    local frac = (-1.0 * db) / GR_METER_RANGE_DB;
+    frac = Math.max(0.0, Math.min(1.0, frac));
+    return h * frac;
+}
+
+attenuationMeter.setPaintRoutine(function(g)
+{
+    local w = this.getWidth();
+    local h = this.getHeight();
+
+    g.setColour(0xFF1A1A1A);
+    g.fillRect([0, 0, w, h]);
+
+    local barHeight = dbToMeterY(attenuationDb, h);
+    g.setColour(GR_METER_BAR_COLOUR);
+    g.fillRect([0, 0, w, barHeight]);
+
+    g.setColour(GR_METER_TICK_COLOUR);
+    g.setFont("Arial", 8);
+    for (i = 0; i < GR_METER_TICKS_DB.length; i++)
+    {
+        local tickY = dbToMeterY(GR_METER_TICKS_DB[i], h);
+        g.drawHorizontalLine(tickY, 0, w);
+        g.drawAlignedText(GR_METER_TICKS_DB[i] + "", [0, tickY - 9, w - 2, 9], "right");
+    }
+});
+
+// Only count a stage's reduction while it's actually enabled - a disabled
+// stage still reports whatever raw value it last held, which is not
+// meaningful once it's switched off. When enabled, the raw reduction is
+// trusted as-is: a hard-shut gate legitimately reads close to -infinity dB,
+// and that should show as full-scale on the meter, not get floored away.
+const var attenuationMeterTimer = Engine.createTimerObject();
+attenuationMeterTimer.setTimerCallback(function()
+{
+    local gateDb = 0.0;
+    if (dyn.getAttribute(dyn.GateEnabled))
+        gateDb = Engine.getDecibelsForGainFactor(dyn.getAttribute(dyn.GateReduction));
+
+    local compDb = 0.0;
+    if (dyn.getAttribute(dyn.CompressorEnabled))
+        compDb = Engine.getDecibelsForGainFactor(dyn.getAttribute(dyn.CompressorReduction));
+
+    attenuationDb = gateDb + compDb;
+    attenuationMeter.repaint();
+});
+attenuationMeterTimer.startTimer(30);
 // ---------------- Output gain ----------------
 inline function onOutputGain(component, value)
 {
@@ -187,6 +255,34 @@ inline function onPresetsButtonControl(component, value)
 
 presetsButton.setControlCallback(onPresetsButtonControl);
 aboutButton.setControlCallback(onAboutButtonControl);
+// ---------------- About panel: website link hotspots ----------------
+// Invisible panels placed over the rendered URL text in the about-box art.
+// Shared callback keyed off component ID, same convention as the EQ bands.
+const var linkIds  = ["pnlLinkIMI", "pnlLinkTribalTools", "pnlLinkGitRepo", "pnlLinkJUCE", "pnlLinkHISE"];
+const var linkUrls =
+[
+    "https://www.innovativemusicalinstruments.com/kchannel",
+    "https://tribal-tools.com/",
+    "https://github.com/innovative-musical-instruments/imi-kchannel",
+    "https://juce.com/",
+    "https://hise.dev/"
+];
+
+inline function onLinkPanelMouse(event)
+{
+    if (event.mouseUp)
+    {
+        local idx = linkIds.indexOf(this.get("id"));
+        if (idx != -1) Engine.openWebsite(linkUrls[idx]);
+    }
+};
+
+for (i = 0; i < linkIds.length; i++)
+{
+    local p = Content.getComponent(linkIds[i]);
+    p.setMouseCursor("PointingHandCursor", Colours.white, [0, 0]);
+    p.setMouseCallback(onLinkPanelMouse);
+}
 // ---------------- Clip indicator LEDs ----------------
 // Reads Globals.peakL/peakR, written by the Script FX "Peak Detector" node
 // living in imiKChannel's own root-level FX chain (post everything,
@@ -262,22 +358,7 @@ clipTimer.setTimerCallback(function()
     if (newL != clipState[0]) { clipState[0] = newL; clipLedL.repaint(); }
     if (newR != clipState[1]) { clipState[1] = newR; clipLedR.repaint(); }
 });
-clipTimer.startTimer(30); // 30ms poll
-function onNoteOn()
-{
-}
-function onNoteOff()
-{
-}
-function onController()
-{
-}
-function onTimer()
-{
-}
-function onControl(number, value)
-{
-}function onNoteOn()
+clipTimer.startTimer(30); // 30ms pollfunction onNoteOn()
 {
 	
 }

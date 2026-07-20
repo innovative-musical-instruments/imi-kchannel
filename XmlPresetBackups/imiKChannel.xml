@@ -23,14 +23,18 @@
             <Control type="ScriptSlider" id="sldBand3Gain" value="0.0"/>
             <Control type="ScriptSlider" id="sldBand4Gain" value="0.0"/>
             <Control type="ScriptSlider" id="sldBand3Width" value="1.5"/>
+            <Control type="ScriptButton" id="btnGateOnOff" value="0.0"/>
             <Control type="ScriptSlider" id="sldGateThresh" value="-100.0"/>
             <Control type="ScriptSlider" id="sldGateAttack" value="0.1000000014901161"/>
-            <Control type="ScriptSlider" id="sldGateRelease" value="43.04000091552734"/>
+            <Control type="ScriptSlider" id="sldGateRelease" value="49.54999923706055"/>
+            <Control type="ScriptButton" id="btnCompOnOff" value="1.0"/>
             <Control type="ScriptSlider" id="sldCompThresh" value="0.0"/>
             <Control type="ScriptSlider" id="sldCompRatio" value="1.0"/>
-            <Control type="ScriptSlider" id="sldCompAttack" value="48.20000076293945"/>
-            <Control type="ScriptSlider" id="sldCompRelease" value="212.0099945068359"/>
-            <Control type="ScriptSlider" id="SldOutputGain" value="0.800000011920929"/>
+            <Control type="ScriptSlider" id="sldCompAttack" value="49.60000228881836"/>
+            <Control type="ScriptSlider" id="sldCompRelease" value="150.0099945068359"/>
+            <Control type="ScriptSlider" id="SldOutputGain" value="1.490116119384766e-6"/>
+            <Control type="ScriptButton" id="presetsButton" value="0"/>
+            <Control type="ScriptButton" id="aboutButton" value="0.0"/>
           </Content>
           <UIData Source="imiKChannelUIData"/>
         </Processor>
@@ -68,7 +72,26 @@
         </Processor>
         <Processor Type="EffectChain" ID="FX" Bypassed="0">
           <ChildProcessors>
-            <Processor Type="SimpleGain" ID="Simple Gain" Bypassed="0" Gain="0.8000001907348633"
+            <Processor Type="Dynamics" ID="Dynamics" Bypassed="0" GateEnabled="0.0"
+                       GateThreshold="-100.0" GateAttack="0.1000000014901161" GateRelease="49.54999923706055"
+                       CompressorEnabled="1.0" CompressorThreshold="0.0" CompressorRatio="1.0"
+                       CompressorAttack="49.60000228881836" CompressorRelease="150.0099945068359"
+                       LimiterEnabled="0.0" LimiterThreshold="0.0" LimiterAttack="1.0"
+                       LimiterRelease="10.0" CompressorMakeup="0.0" LimiterMakeup="0.0">
+              <ChildProcessors/>
+              <RoutingMatrix NumSourceChannels="2" Channel0="0" Send0="-1" Channel1="1" Send1="-1"/>
+            </Processor>
+            <Processor Type="CurveEq" ID="Parametriq EQ" Bypassed="0" NumFilters="5"
+                       Band0="1.634250164031982" Band1="20.0" Band2="1.084633231163025"
+                       Band3="0.0" Band4="1.0" Band5="0.0" Band6="100.0" Band7="1.0"
+                       Band8="1.0" Band9="2.0" Band10="0.0" Band11="680.0" Band12="1.5"
+                       Band13="1.0" Band14="4.0" Band15="0.0" Band16="4100.0" Band17="1.0"
+                       Band18="1.0" Band19="3.0" Band20="0.2727275788784027" Band21="20000.0"
+                       Band22="1.0" Band23="0.0" Band24="0.0" FFTEnabled="1">
+              <ChildProcessors/>
+              <RoutingMatrix NumSourceChannels="2" Channel0="0" Send0="-1" Channel1="1" Send1="-1"/>
+            </Processor>
+            <Processor Type="SimpleGain" ID="Simple Gain" Bypassed="0" Gain="1.0354386859035e-6"
                        Delay="0.0" Width="100.0" Balance="0.0" InvertPolarity="0.0">
               <ChildProcessors>
                 <Processor Type="ModulatorChain" ID="Gain Modulation" Bypassed="0" Intensity="1.0">
@@ -86,65 +109,7 @@
               </ChildProcessors>
               <RoutingMatrix NumSourceChannels="2" Channel0="0" Send0="-1" Channel1="1" Send1="-1"/>
             </Processor>
-            <Processor Type="Dynamics" ID="Dynamics" Bypassed="0" GateEnabled="1.0"
-                       GateThreshold="-100.0" GateAttack="0.1000000014901161" GateRelease="43.04000091552734"
-                       CompressorEnabled="1.0" CompressorThreshold="0.0" CompressorRatio="1.0"
-                       CompressorAttack="48.20000076293945" CompressorRelease="212.0099945068359"
-                       LimiterEnabled="0.0" LimiterThreshold="0.0" LimiterAttack="1.0"
-                       LimiterRelease="10.0" CompressorMakeup="0.0" LimiterMakeup="0.0">
-              <ChildProcessors/>
-              <RoutingMatrix NumSourceChannels="2" Channel0="0" Send0="-1" Channel1="1" Send1="-1"/>
-            </Processor>
-            <Processor Type="CurveEq" ID="Parametriq EQ" Bypassed="0" NumFilters="5"
-                       Band0="1.634250164031982" Band1="20.0" Band2="1.084633231163025"
-                       Band3="0.0" Band4="1.0" Band5="0.0" Band6="100.0" Band7="1.0"
-                       Band8="1.0" Band9="2.0" Band10="0.0" Band11="680.0" Band12="1.5"
-                       Band13="1.0" Band14="4.0" Band15="0.0" Band16="4100.0" Band17="1.0"
-                       Band18="1.0" Band19="3.0" Band20="0.0" Band21="20000.0" Band22="1.0"
-                       Band23="0.0" Band24="0.0" FFTEnabled="1">
-              <ChildProcessors/>
-              <RoutingMatrix NumSourceChannels="2" Channel0="0" Send0="-1" Channel1="1" Send1="-1"/>
-            </Processor>
           </ChildProcessors>
-        </Processor>
-        <Processor Type="WaveSynth" ID="Waveform Generator" Bypassed="0" Gain="0.25"
-                   Balance="0.0" VoiceLimit="256.0" KillFadeTime="20.0" IconColour="0"
-                   OctaveTranspose1="0.0" SemiTones1="0.0" OctaveTranspose2="0.0"
-                   SemiTones2="0.0" Detune1="0.0" Detune2="0.0" WaveForm1="5.0"
-                   WaveForm2="5.0" Pan1="0.0" Pan2="0.0" Mix="0.5" EnableSecondOscillator="1.0"
-                   PulseWidth1="0.5" PulseWidth2="0.5" HardSync="0.0">
-          <ChildProcessors>
-            <Processor Type="MidiProcessorChain" ID="Midi Processor" Bypassed="0">
-              <ChildProcessors/>
-            </Processor>
-            <Processor Type="ModulatorChain" ID="GainModulation" Bypassed="0" Intensity="1.0">
-              <ChildProcessors>
-                <Processor Type="SimpleEnvelope" ID="DefaultEnvelope" Bypassed="0" Monophonic="0.0"
-                           Retrigger="1.0" Intensity="1.0" Attack="5.0" Release="10.0" LinearMode="1.0">
-                  <ChildProcessors>
-                    <Processor Type="ModulatorChain" ID="Attack Time Modulation" Bypassed="0"
-                               Intensity="1.0">
-                      <ChildProcessors/>
-                    </Processor>
-                  </ChildProcessors>
-                </Processor>
-              </ChildProcessors>
-            </Processor>
-            <Processor Type="ModulatorChain" ID="PitchModulation" Bypassed="0" Intensity="0.0">
-              <ChildProcessors/>
-            </Processor>
-            <Processor Type="EffectChain" ID="FX" Bypassed="0">
-              <ChildProcessors/>
-            </Processor>
-            <Processor Type="ModulatorChain" ID="Mix Modulation" Bypassed="0" Intensity="1.0">
-              <ChildProcessors/>
-            </Processor>
-            <Processor Type="ModulatorChain" ID="Osc2 Pitch Modulation" Bypassed="0"
-                       Intensity="0.0">
-              <ChildProcessors/>
-            </Processor>
-          </ChildProcessors>
-          <RoutingMatrix NumSourceChannels="2" Channel0="0" Send0="-1" Channel1="1" Send1="-1"/>
         </Processor>
       </ChildProcessors>
       <RoutingMatrix NumSourceChannels="2" Channel0="0" Send0="-1" Channel1="1" Send1="-1"/>

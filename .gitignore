@@ -14,3 +14,9 @@ build/
 
 # Temp files
 *.tmp
+
+# HISE pooled resource cache (regenerated from Images/ etc. on compile)
+PooledResources/
+
+# HISE session/user timestamp file, not meaningful content
+user_info.xml
