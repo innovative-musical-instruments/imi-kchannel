@@ -9,6 +9,7 @@
         <Processor Type="ScriptProcessor" ID="Interface" Bypassed="0">
           <ChildProcessors/>
           <Content>
+            <Control type="ScriptButton" id="btnEQOnOff" value="1.0"/>
             <Control type="ScriptButton" id="btnBand1OnOff" value="0.0"/>
             <Control type="ScriptButton" id="btnBand2OnOff" value="1.0"/>
             <Control type="ScriptButton" id="btnBand3OnOff" value="1.0"/>

@@ -8,6 +8,9 @@
                height="200" ContentType="DraggableFilterPanel" bgColour="2885681152"
                itemColour="16777215" itemColour2="4294967295" Data="{&#10;  &quot;ProcessorId&quot;: &quot;Parametriq EQ&quot;,&#10;  &quot;Index&quot;: -1,&#10;  &quot;FollowWorkspace&quot;: true,&#10;  &quot;AllowDynamicSpectrumAnalyser&quot;: true,&#10;  &quot;GainRange&quot;: 24.0,&#10;  &quot;ShowLines&quot;: true,&#10;  &quot;AllowFilterResizing&quot;: false,&#10;  &quot;AllowContextMenu&quot;: true&#10;}"
                parentComponent="pnlBase1" itemColour3="4286940549"/>
+    <Component type="ScriptButton" id="btnEQOnOff" x="267" y="57" width="100"
+               height="20" parentComponent="pnlBase1" text="EQOnOff" processorId="Parametriq EQ"
+               parameterId="Enabled" textColour="3355443199" locked="1"/>
     <Component type="ScriptButton" id="btnBand1OnOff" x="25" y="259" width="20"
                height="20" parentComponent="pnlBase1" pluginParameterName="Band1OnOff"
                isPluginParameter="1"/>
