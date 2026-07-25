@@ -6,14 +6,11 @@ Repo: `https://github.com/innovative-musical-instruments/imi-kchannel.git`, bran
 
 ## Right now (2026-07-25)
 
-`Presets/imiKChannel.hip` is modified (added a global EQ on/off switch) and already staged for commit. Suggested commit message: `"Add global EQ on/off switch (preset update)"`. Just needs `git commit` + `git push origin master`.
+The global EQ on/off switch preset change is committed and pushed to `origin/master` (through commit `fb25078`).
 
-Before committing, delete these leftover files — they're artifacts from a sandboxed tool (Cowork) that couldn't delete its own temp files on this mounted volume; harmless, just clutter:
-- `.git/index.lock`
-- `.git/index.lock.old`
-- `test_delete_me.txt`
+macOS build is done: `KChannel.vst3` and `KChannel.component` were built in HISE, signed with the `Developer ID Application: Amir Vinci (B74YHJSPSY)` identity (hardened runtime + secure timestamp), notarized via `xcrun notarytool` (keychain profile `kplayer-notary`), and stapled. Verified accepted by Gatekeeper (`spctl -a -vv` reports "Notarized Developer ID"). Zipped copies of the stapled bundles for testers live in `Binaries/notarization-zips/` (gitignored, not tracked).
 
-After this commit/push, the next step is building a release and preparing it for notarization/distribution.
+Next step: Vinch is moving to a Windows machine to build the Windows (VST3) version. No Windows-specific build notes exist yet in this file — HISE exporter settings, VST3 SDK paths, and whether/how to Authenticode-sign the Windows build are all undocumented; capture gotchas here as they come up.
 
 ## Working rules
 
