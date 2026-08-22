@@ -30,11 +30,11 @@
   <ExpansionType value="Disabled"/>
   <EncryptionKey value=""/>
   <LinkExpansionsToProject value="No"/>
-  <ReadOnlyFactoryPresets value="No"/>
+  <ReadOnlyFactoryPresets value="1"/>
   <ForceStereoOutput value="No"/>
   <AdminPermissions value="No"/>
   <EmbedUserPresets value="Yes"/>
-  <OverwriteOldUserPresets value="No"/>
+  <OverwriteOldUserPresets value="1"/>
   <EnableGlobalPreprocessor value="No"/>
   <UseGlobalAppDataFolderWindows value="No"/>
   <UseGlobalAppDataFolderMacOS value="No"/>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Preset Version="1.0.0">
+  <Content Processor="Interface">
+    <Control type="ScriptButton" id="btnEQOnOff" value="1.0"/>
+    <Control type="ScriptButton" id="btnBand1OnOff" value="0.0"/>
+    <Control type="ScriptButton" id="btnBand2OnOff" value="1.0"/>
+    <Control type="ScriptButton" id="btnBand3OnOff" value="1.0"/>
+    <Control type="ScriptButton" id="btnBand4OnOff" value="1.0"/>
+    <Control type="ScriptButton" id="btnBand5OnOff" value="0.0"/>
+    <Control type="ScriptSlider" id="sldBand1Freq" value="20.0"/>
+    <Control type="ScriptSlider" id="sldBand2Freq" value="100.0"/>
+    <Control type="ScriptSlider" id="sldBand3Freq" value="710.2999877929688"/>
+    <Control type="ScriptSlider" id="sldBand4Freq" value="4100.0"/>
+    <Control type="ScriptSlider" id="sldBand5Freq" value="20000.0"/>
+    <Control type="ScriptSlider" id="sldBand2Gain" value="5.480000019073486"/>
+    <Control type="ScriptSlider" id="sldBand3Gain" value="-4.690000057220459"/>
+    <Control type="ScriptSlider" id="sldBand4Gain" value="0.0"/>
+    <Control type="ScriptSlider" id="sldBand3Width" value="0.3900000154972076"/>
+    <Control type="ScriptButton" id="btnGateOnOff" value="1.0"/>
+    <Control type="ScriptSlider" id="sldGateThresh" value="-38.0"/>
+    <Control type="ScriptSlider" id="sldGateAttack" value="0.1000000014901161"/>
+    <Control type="ScriptSlider" id="sldGateRelease" value="49.54999923706055"/>
+    <Control type="ScriptButton" id="btnCompOnOff" value="1.0"/>
+    <Control type="ScriptSlider" id="sldCompThresh" value="-22.09999847412109"/>
+    <Control type="ScriptSlider" id="sldCompRatio" value="4.679999828338623"/>
+    <Control type="ScriptSlider" id="sldCompAttack" value="49.60000228881836"/>
+    <Control type="ScriptSlider" id="sldCompRelease" value="150.0099945068359"/>
+    <Control type="ScriptSlider" id="SldOutputGain" value="1.490116119384766e-6"/>
+    <Control type="ScriptButton" id="presetsButton" value="1.0"/>
+    <Control type="ScriptButton" id="aboutButton" value="0"/>
+  </Content>
+  <MidiAutomation/>
+  <MPEData Enabled="0"/>
+</Preset>
