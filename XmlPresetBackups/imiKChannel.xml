@@ -35,7 +35,7 @@
             <Control type="ScriptSlider" id="sldCompRelease" value="150.0099945068359"/>
             <Control type="ScriptSlider" id="SldOutputGain" value="1.490116119384766e-6"/>
             <Control type="ScriptButton" id="presetsButton" value="0.0"/>
-            <Control type="ScriptButton" id="aboutButton" value="0.0"/>
+            <Control type="ScriptButton" id="aboutButton" value="0"/>
           </Content>
           <UIData Source="imiKChannelUIData"/>
         </Processor>
