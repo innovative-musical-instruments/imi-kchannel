@@ -20,3 +20,6 @@ PooledResources/
 
 # HISE session/user timestamp file, not meaningful content
 user_info.xml
+
+# Internal pipeline notes (kept private; canonical copy in imi-common-docs)
+CLAUDE.md
