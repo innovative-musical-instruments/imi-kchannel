@@ -62,7 +62,7 @@
                height="52" parentComponent="pnlBase1" mode="Frequency" min="20.0"
                max="20000.0" stepSize="1.0" suffix=" Hz" middlePosition="1500.0"
                filmstripImage="{PROJECT_FOLDER}knob-65x65-128f.png" numStrips="128.0"
-               scaleFactor="0.800000011920929" defaultValue="4100.0" pluginParameterName="Band4Freq"
+               scaleFactor="0.800000011920929" defaultValue="5000.0" pluginParameterName="Band4Freq"
                isPluginParameter="1"/>
     <Component type="ScriptLabel" id="lblBand4Freq" x="249" y="358" width="64"
                height="17" parentComponent="pnlBase1" text="4.10 kHz" editable="0"
@@ -180,7 +180,7 @@
                fontSize="10.0" textColour="4291875036"/>
     <Component type="ScriptPanel" id="pnlAttenuationMeter" x="238" y="633" width="12"
                height="136" parentComponent="pnlBase1"/>
-    <Component type="ScriptSlider" id="SldOutputGain" x="313" y="515" width="32"
+    <Component type="ScriptSlider" id="SldOutputGain" x="313" defaultValue="0.0" y="515" width="32"
                height="250" parentComponent="pnlBase1" stepSize="0.1000000014901161"
                suffix=" dB" middlePosition="-18.0" filmstripImage="{PROJECT_FOLDER}fader-32x250-128f.png"
                numStrips="128.0" mode="Decibel" min="-100.0" max="36.0" pluginParameterName="OutputGain"
