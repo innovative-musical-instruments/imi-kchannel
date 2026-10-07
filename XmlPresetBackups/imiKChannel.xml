@@ -22,20 +22,20 @@
             <Control type="ScriptSlider" id="sldBand5Freq" value="20000.0"/>
             <Control type="ScriptSlider" id="sldBand2Gain" value="0.0"/>
             <Control type="ScriptSlider" id="sldBand3Gain" value="0.0"/>
-            <Control type="ScriptSlider" id="sldBand4Gain" value="0.0"/>
             <Control type="ScriptSlider" id="sldBand3Width" value="1.5"/>
+            <Control type="ScriptSlider" id="sldBand4Gain" value="0.0"/>
             <Control type="ScriptButton" id="btnGateOnOff" value="0.0"/>
+            <Control type="ScriptButton" id="btnCompOnOff" value="1.0"/>
             <Control type="ScriptSlider" id="sldGateThresh" value="-100.0"/>
             <Control type="ScriptSlider" id="sldGateAttack" value="0.1000000014901161"/>
             <Control type="ScriptSlider" id="sldGateRelease" value="49.54999923706055"/>
-            <Control type="ScriptButton" id="btnCompOnOff" value="1.0"/>
             <Control type="ScriptSlider" id="sldCompThresh" value="0.0"/>
-            <Control type="ScriptSlider" id="sldCompRatio" value="1.0"/>
             <Control type="ScriptSlider" id="sldCompAttack" value="49.60000228881836"/>
             <Control type="ScriptSlider" id="sldCompRelease" value="150.0099945068359"/>
+            <Control type="ScriptSlider" id="sldCompRatio" value="1.0"/>
             <Control type="ScriptSlider" id="SldOutputGain" value="1.490116119384766e-6"/>
-            <Control type="ScriptButton" id="presetsButton" value="0.0"/>
-            <Control type="ScriptButton" id="aboutButton" value="0"/>
+            <Control type="ScriptButton" id="presetsButton" value="0"/>
+            <Control type="ScriptButton" id="aboutButton" value="0.0"/>
           </Content>
           <UIData Source="imiKChannelUIData"/>
         </Processor>

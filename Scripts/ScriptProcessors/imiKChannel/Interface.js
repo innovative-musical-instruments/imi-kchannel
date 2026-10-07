@@ -160,13 +160,11 @@ Content.getComponent("sldCompRelease").setControlCallback(onCompRelease);
 // gain reduction is applied. Combines GateReduction + CompressorReduction,
 // so a closed gate reads as full-scale (dominates), and with the gate open
 // the bar tracks compressor GR only - one panel, two jobs.
-// No live numeric label - GR moves too erratically with the ballistics to
-// read as text, so static dB reference lines are drawn on the meter instead.
+// The well and its dB reference labels are painted in the base picture, so
+// this panel only draws the bar.
 const var attenuationMeter = Content.getComponent("pnlAttenuationMeter");
 const var GR_METER_RANGE_DB = 24.0;            // 0 dB at top, -24 dB at bottom (full-scale)
-const var GR_METER_TICKS_DB = [-6, -12, -18];  // reference lines between the ends
-const var GR_METER_BAR_COLOUR  = 0xFFFFAA00;   // amber
-const var GR_METER_TICK_COLOUR = 0x55FFFFFF;
+const var GR_METER_BAR_COLOUR = 0xFFFFA040;   // orange, matches the base picture
 reg attenuationDb = 0.0;
 
 inline function dbToMeterY(db, h)
@@ -181,21 +179,10 @@ attenuationMeter.setPaintRoutine(function(g)
     local w = this.getWidth();
     local h = this.getHeight();
 
-    g.setColour(0xFF1A1A1A);
-    g.fillRect([0, 0, w, h]);
-
     local barHeight = dbToMeterY(attenuationDb, h);
     g.setColour(GR_METER_BAR_COLOUR);
     g.fillRect([0, 0, w, barHeight]);
 
-    g.setColour(GR_METER_TICK_COLOUR);
-    g.setFont("Arial", 8);
-    for (i = 0; i < GR_METER_TICKS_DB.length; i++)
-    {
-        local tickY = dbToMeterY(GR_METER_TICKS_DB[i], h);
-        g.drawHorizontalLine(tickY, 0, w);
-        g.drawAlignedText(GR_METER_TICKS_DB[i] + "", [0, tickY - 9, w - 2, 9], "right");
-    }
 });
 
 // Only count a stage's reduction while it's actually enabled - a disabled
